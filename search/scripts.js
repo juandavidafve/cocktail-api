@@ -42,7 +42,7 @@ function getUrlParams() {
 
   let name = urlParams.get("name");
 
-  if (name.length === 0) {
+  if (name && name.length === 0) {
     name = null;
   }
 
@@ -82,7 +82,7 @@ function fillInputs() {
 async function getResults() {
   const { name, ingredient, alcohol } = getUrlParams();
 
-  let url = "";
+  let url = null;
   if (name) {
     url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
   } else if (ingredient) {
@@ -91,17 +91,28 @@ async function getResults() {
     url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${alcohol}`;
   }
 
+  if (!url) {
+    return;
+  }
+
   const resultsElem = document.querySelector("#results");
   const req = await fetch(url);
   const data = await req.json();
 
+  if (!data.drinks) {
+    resultsElem.innerHTML = `
+      <span class="text-primary-600 font-bold">No hay resultados</span>
+    `;
+    return;
+  }
+
   resultsElem.innerHTML = data.drinks
     .map((drink) => {
       return `
-        <div>
-            <a href="/drink?id=${drink.idDrink}">${drink.strDrink}</a>
-            <img src="${drink.strDrinkThumb}" />
-        </div>
+        <a href="/drink?id=${drink.idDrink}" class="grid grid-rows-auto-1fr items-center justify-center max-w-10 p-1 font-bold text-primary-600 bg-primary-200 border rounded transition hover-scale">
+            ${drink.strDrink}
+            <img class="w-full mt-1 rounded" src="${drink.strDrinkThumb}" />
+        </a>
       `;
     })
     .join("");
