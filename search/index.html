@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="ingrediente">Ingrediente</label>
+      <select name="ingredient" id="ingredient">
+        <option value="null" selected>Sin Elegir</option>
+      </select>
+
+      <label for="alcohol">Tipo</label>
+      <select name="alcohol" id="alcohol">
+        <option value="null" selected>Sin Elegir</option>
+      </select>
+
+      <label for="name">Nombre</label>
+      <input type="text" name="name" id="name" />
+
+      <input type="submit" value="Buscar" />
+    </form>
+    <div id="results"></div>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
