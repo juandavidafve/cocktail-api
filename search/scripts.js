@@ -32,6 +32,10 @@ async function fillIngredientOptions() {
     elem.value = ingredient.strIngredient1;
     elem.innerText = ingredient.strIngredient1;
 
+    if (getUrlParams().ingredient === elem.value) {
+      elem.selected = true;
+    }
+
     ingredientsElem.appendChild(elem);
   }
 }
