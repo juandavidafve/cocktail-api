@@ -109,7 +109,7 @@ async function getResults() {
   resultsElem.innerHTML = data.drinks
     .map((drink) => {
       return `
-        <a href="/drink?id=${drink.idDrink}" class="grid grid-rows-auto-1fr items-center justify-center max-w-10 p-1 font-bold text-primary-600 bg-primary-200 border rounded transition hover-scale">
+        <a href="../drink?id=${drink.idDrink}" class="grid grid-rows-auto-1fr items-center justify-center max-w-10 p-1 font-bold text-primary-600 bg-primary-200 border rounded transition hover-scale">
             ${drink.strDrink}
             <img class="w-full mt-1 rounded" src="${drink.strDrinkThumb}" />
         </a>
