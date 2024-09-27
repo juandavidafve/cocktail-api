@@ -44,12 +44,6 @@ function getUrlParams() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
-  let name = urlParams.get("name");
-
-  if (name && name.length === 0) {
-    name = null;
-  }
-
   let ingredient = urlParams.get("ingredient");
 
   if (ingredient === "null") {
@@ -60,6 +54,18 @@ function getUrlParams() {
 
   if (alcohol === "null") {
     alcohol = null;
+  }
+
+  let name = urlParams.get("name");
+
+  // Si name es vacio, pero hay alcohol o ingrediente, entonces name pasa a ser null
+  // Si name es vacio y no hay alcohol ni ingrediente, entonces name queda como "" para mostrar todos
+  if (
+    name !== null &&
+    name.length === 0 &&
+    (alcohol !== null || ingredient !== null)
+  ) {
+    name = null;
   }
 
   return {
@@ -87,7 +93,7 @@ async function getResults() {
   const { name, ingredient, alcohol } = getUrlParams();
 
   let url = null;
-  if (name) {
+  if (name !== null) {
     url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
   } else if (ingredient) {
     url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
@@ -113,7 +119,7 @@ async function getResults() {
   resultsElem.innerHTML = data.drinks
     .map((drink) => {
       return `
-        <a href="cocktail.html?id=${drink.idDrink}" class="grid grid-rows-auto-1fr items-center justify-center max-w-10 p-1 font-bold text-primary-600 bg-primary-200 border rounded transition hover-scale">
+        <a href="../cocktail/?id=${drink.idDrink}" class="grid grid-rows-auto-1fr items-center justify-center max-w-10 p-1 font-bold text-primary-600 bg-primary-200 border rounded transition hover-scale">
             ${drink.strDrink}
             <img class="w-full mt-1 rounded" src="${drink.strDrinkThumb}" />
         </a>
