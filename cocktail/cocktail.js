@@ -51,5 +51,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   
   function redirectToIngredient(ingredient) {
     const ingredientName = ingredient.replace(/ /g, "_");
-    window.location.href = `ingredients.html?name=${ingredientName}`;
+    window.location.href = `../ingredient/?name=${ingredientName}`;
   }  
