@@ -111,7 +111,7 @@ async function getResults() {
 
   if (!data.drinks) {
     resultsElem.innerHTML = `
-      <span class="text-primary-600 font-bold">No hay resultados</span>
+      <span class="text-primary-600 font-bold text-xl">No hay resultados</span>
     `;
     return;
   }

@@ -135,6 +135,10 @@ button:hover {
   width: 100%;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .max-w-10 {
   max-width: 10rem;
 }
@@ -157,6 +161,10 @@ button:hover {
 
 .justify-center {
   justify-content: center;
+}
+
+.text-xl {
+  font-size: x-large;
 }
 
 /* Text Colors */

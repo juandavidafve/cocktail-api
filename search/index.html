@@ -6,7 +6,7 @@
     <title>Search Cocktail</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="min-h-screen grid grid-rows-auto-1fr">
     <form
       class="m-2 flex flex-wrap sm-flex-col lg-flex-row gap-2 items-center justify-center"
     >
@@ -31,10 +31,9 @@
 
       <input class="pointer" type="submit" value="Search" />
     </form>
-    <div
-      id="results"
-      class="flex flex-wrap items-center justify-center gap-1"
-    ></div>
+    <div id="results" class="flex flex-wrap items-center justify-center gap-1">
+      <img src="./cocktail.png" class="max-w-10" />
+    </div>
 
     <script src="scripts.js"></script>
   </body>
