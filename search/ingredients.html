@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Ingrediente</title>
     <link rel="stylesheet" href="ingredients.css">
 </head>
+
 <body>
     <div class="container">
         <div class="ingredient-card">
@@ -48,7 +50,7 @@
             document.getElementById('ingredient-type').innerText = ingredient.strType || 'Desconocido';
             document.getElementById('ingredient-alcoholic').innerText = ingredient.strAlcohol === 'Yes' ? 'Sí' : 'No';
             document.getElementById('ingredient-abv').innerText = ingredient.strABV ? `${ingredient.strABV}%` : 'No disponible';
-            
+
             // Actualizar la imagen si existe
             if (ingredient.strIngredientThumb) {
                 document.getElementById('ingredient-img').src = ingredient.strIngredientThumb;
@@ -62,4 +64,5 @@
         fetchIngredientDetails(ingredientName);
     </script>
 </body>
+
 </html>

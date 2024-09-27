@@ -27,7 +27,7 @@ function fetchIngredientDetails(ingredientName) {
             ingredientTypeElement.textContent = ingredient.strType || "No especificado.";
             ingredientAlcoholicElement.textContent = ingredient.strAlcohol === "Yes" ? "Sí" : "No";
             ingredientAbvElement.textContent = ingredient.strABV || "N/A";
-            
+
             // Imagen del ingrediente
             const imageUrl = `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}.png`;
             ingredientImg.src = imageUrl.replace(/ /g, "%20");

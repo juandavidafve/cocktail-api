@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buscar Coctel</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <form class="m-2 flex flex-wrap gap-2 items-center justify-center">
-      <div class="flex gap-1 items-center">
-        <label for="ingrediente">Ingrediente</label>
-        <select name="ingredient" id="ingredient">
-          <option value="null" selected>Sin Elegir</option>
-        </select>
-      </div>
 
-      <div class="flex gap-1 items-center">
-        <label for="alcohol">Tipo</label>
-        <select name="alcohol" id="alcohol">
-          <option value="null" selected>Sin Elegir</option>
-        </select>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buscar Coctel</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-      <div class="flex gap-1 items-center">
-        <label for="name">Nombre</label>
-        <input type="text" name="name" id="name" />
-      </div>
+<body>
+  <form class="m-2 flex flex-wrap gap-2 items-center justify-center">
+    <div class="flex gap-1 items-center">
+      <label for="ingrediente">Ingrediente</label>
+      <select name="ingredient" id="ingredient">
+        <option value="null" selected>Sin Elegir</option>
+      </select>
+    </div>
 
-      <input class="pointer" type="submit" value="Buscar" />
-    </form>
-    <div
-      id="results"
-      class="flex flex-wrap items-center justify-center gap-1"
-    ></div>
+    <div class="flex gap-1 items-center">
+      <label for="alcohol">Tipo</label>
+      <select name="alcohol" id="alcohol">
+        <option value="null" selected>Sin Elegir</option>
+      </select>
+    </div>
 
-    <script src="scripts.js"></script>
-  </body>
+    <div class="flex gap-1 items-center">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" id="name" />
+    </div>
+
+    <input class="pointer" type="submit" value="Buscar" />
+  </form>
+  <div id="results" class="flex flex-wrap items-center justify-center gap-1"></div>
+
+  <script src="scripts.js"></script>
+</body>
+
 </html>

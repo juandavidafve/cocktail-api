@@ -151,33 +151,43 @@ button:hover {
 .text-primary-50 {
   color: var(--primary-50);
 }
+
 .text-primary-100 {
   color: var(--primary-100);
 }
+
 .text-primary-200 {
   color: var(--primary-200);
 }
+
 .text-primary-300 {
   color: var(--primary-300);
 }
+
 .text-primary-400 {
   color: var(--primary-400);
 }
+
 .text-primary-500 {
   color: var(--primary-500);
 }
+
 .text-primary-600 {
   color: var(--primary-600);
 }
+
 .text-primary-700 {
   color: var(--primary-700);
 }
+
 .text-primary-800 {
   color: var(--primary-800);
 }
+
 .text-primary-900 {
   color: var(--primary-900);
 }
+
 .text-primary-950 {
   color: var(--primary-950);
 }
@@ -185,33 +195,43 @@ button:hover {
 .text-shade-50 {
   color: var(--shade-50);
 }
+
 .text-shade-100 {
   color: var(--shade-100);
 }
+
 .text-shade-200 {
   color: var(--shade-200);
 }
+
 .text-shade-300 {
   color: var(--shade-300);
 }
+
 .text-shade-400 {
   color: var(--shade-400);
 }
+
 .text-shade-500 {
   color: var(--shade-500);
 }
+
 .text-shade-600 {
   color: var(--shade-600);
 }
+
 .text-shade-700 {
   color: var(--shade-700);
 }
+
 .text-shade-800 {
   color: var(--shade-800);
 }
+
 .text-shade-900 {
   color: var(--shade-900);
 }
+
 .text-shade-950 {
   color: var(--shade-950);
 }
@@ -221,33 +241,43 @@ button:hover {
 .bg-primary-50 {
   background: var(--primary-50);
 }
+
 .bg-primary-100 {
   background: var(--primary-100);
 }
+
 .bg-primary-200 {
   background: var(--primary-200);
 }
+
 .bg-primary-300 {
   background: var(--primary-300);
 }
+
 .bg-primary-400 {
   background: var(--primary-400);
 }
+
 .bg-primary-500 {
   background: var(--primary-500);
 }
+
 .bg-primary-600 {
   background: var(--primary-600);
 }
+
 .bg-primary-700 {
   background: var(--primary-700);
 }
+
 .bg-primary-800 {
   background: var(--primary-800);
 }
+
 .bg-primary-900 {
   background: var(--primary-900);
 }
+
 .bg-primary-950 {
   background: var(--primary-950);
 }
@@ -255,33 +285,43 @@ button:hover {
 .bg-shade-50 {
   background: var(--shade-50);
 }
+
 .bg-shade-100 {
   background: var(--shade-100);
 }
+
 .bg-shade-200 {
   background: var(--shade-200);
 }
+
 .bg-shade-300 {
   background: var(--shade-300);
 }
+
 .bg-shade-400 {
   background: var(--shade-400);
 }
+
 .bg-shade-500 {
   background: var(--shade-500);
 }
+
 .bg-shade-600 {
   background: var(--shade-600);
 }
+
 .bg-shade-700 {
   background: var(--shade-700);
 }
+
 .bg-shade-800 {
   background: var(--shade-800);
 }
+
 .bg-shade-900 {
   background: var(--shade-900);
 }
+
 .bg-shade-950 {
   background: var(--shade-950);
 }
