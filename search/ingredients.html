@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Ingrediente</title>
+    <link rel="stylesheet" href="ingredients.css">
+</head>
+<body>
+    <div class="container">
+        <div class="ingredient-card">
+            <img id="ingredient-img" alt="Imagen del ingrediente">
+            <div class="ingredient-details">
+                <h2 id="ingredient-name">Nombre del ingrediente</h2>
+                <p><strong>ID:</strong> <span id="ingredient-id"></span></p>
+                <p id="ingredient-description">Descripción del ingrediente</p>
+                <p><strong>Tipo:</strong> <span id="ingredient-type"></span></p>
+                <p><strong>¿Contiene alcohol?:</strong> <span id="ingredient-alcoholic"></span></p>
+                <p><strong>Grado de alcohol (ABV):</strong> <span id="ingredient-abv"></span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Función para obtener el parámetro del nombre del ingrediente en la URL
+        function getIngredientNameFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('name');
+        }
+
+        // Función para buscar los detalles del ingrediente en la API de TheCocktailDB
+        function fetchIngredientDetails(ingredient) {
+            const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const ingredientData = data.ingredients[0]; // Obtenemos los datos del primer ingrediente
+                    displayIngredientDetails(ingredientData);
+                })
+                .catch(error => console.error('Error al obtener los datos del ingrediente:', error));
+        }
+
+        // Función para mostrar los detalles del ingrediente en la página
+        function displayIngredientDetails(ingredient) {
+            document.getElementById('ingredient-name').innerText = ingredient.strIngredient;
+            document.getElementById('ingredient-id').innerText = ingredient.idIngredient;
+            document.getElementById('ingredient-description').innerText = ingredient.strDescription || 'No disponible';
+            document.getElementById('ingredient-type').innerText = ingredient.strType || 'Desconocido';
+            document.getElementById('ingredient-alcoholic').innerText = ingredient.strAlcohol === 'Yes' ? 'Sí' : 'No';
+            document.getElementById('ingredient-abv').innerText = ingredient.strABV ? `${ingredient.strABV}%` : 'No disponible';
+            
+            // Actualizar la imagen si existe
+            if (ingredient.strIngredientThumb) {
+                document.getElementById('ingredient-img').src = ingredient.strIngredientThumb;
+            } else {
+                document.getElementById('ingredient-img').src = 'default-image.jpg'; // Imagen por defecto si no hay imagen disponible
+            }
+        }
+
+        // Obtener el nombre del ingrediente desde el URL y buscar sus detalles
+        const ingredientName = getIngredientNameFromUrl().replace(/_/g, ' '); // Reemplazamos los _ por espacios
+        fetchIngredientDetails(ingredientName);
+    </script>
+</body>
+</html>

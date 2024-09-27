@@ -27,10 +27,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         const ingredient = drink[key];
         const measure = drink[`strMeasure${key.slice(13)}`] || "";
         const ingredientImage = `https://www.thecocktaildb.com/images/ingredients/${ingredient}-Small.png`;
-        const ingredientLink = `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient.replace(/ /g, "_")}`;
         return `
           <li>
-            <img src="${ingredientImage}" alt="${ingredient}" class="ingredient-image" onclick="window.open('${ingredientLink}', '_blank')">
+            <img src="${ingredientImage}" alt="${ingredient}" class="ingredient-image" onclick="redirectToIngredient('${ingredient}')">
             ${ingredient} - ${measure}
           </li>`;
       })
@@ -48,4 +47,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       <h3 class="text-xl mt-2">Instructions</h3>
       <p>${drink.strInstructions}</p>
     `;
+  }
+  
+  function redirectToIngredient(ingredient) {
+    const ingredientName = ingredient.replace(/ /g, "_");
+    window.location.href = `ingredients.html?name=${ingredientName}`;
   }  
