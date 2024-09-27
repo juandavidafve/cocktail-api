@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buscar Coctel</title>
+    <title>Search Cocktail</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -11,25 +11,25 @@
       class="m-2 flex flex-wrap sm-flex-col lg-flex-row gap-2 items-center justify-center"
     >
       <div class="flex gap-1 items-center">
-        <label for="ingrediente">Ingrediente</label>
+        <label for="ingredient">Ingredient</label>
         <select name="ingredient" id="ingredient">
-          <option value="null" selected>Sin Elegir</option>
+          <option value="null" selected>None</option>
         </select>
       </div>
 
       <div class="flex gap-1 items-center">
-        <label for="alcohol">Tipo</label>
+        <label for="alcohol">Type</label>
         <select name="alcohol" id="alcohol">
-          <option value="null" selected>Sin Elegir</option>
+          <option value="null" selected>None</option>
         </select>
       </div>
 
       <div class="flex gap-1 items-center">
-        <label for="name">Nombre</label>
+        <label for="name">Name</label>
         <input type="text" name="name" id="name" />
       </div>
 
-      <input class="pointer" type="submit" value="Buscar" />
+      <input class="pointer" type="submit" value="Search" />
     </form>
     <div
       id="results"
