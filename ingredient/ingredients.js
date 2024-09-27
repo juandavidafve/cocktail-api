@@ -1,43 +1,44 @@
-// Obtener el parámetro del nombre del ingrediente desde la URL
-const urlParams = new URLSearchParams(window.location.search);
-const ingredientName = urlParams.get('ingrediente');
+// Función para retroceder a la página anterior
+function goBack() {
+    window.history.back();
+}
 
-// Elementos del DOM
-const ingredientImg = document.getElementById('ingredient-img');
-const ingredientNameElement = document.getElementById('ingredient-name');
-const ingredientIdElement = document.getElementById('ingredient-id');
-const ingredientDescriptionElement = document.getElementById('ingredient-description');
-const ingredientTypeElement = document.getElementById('ingredient-type');
-const ingredientAlcoholicElement = document.getElementById('ingredient-alcoholic');
-const ingredientAbvElement = document.getElementById('ingredient-abv');
+// Función para obtener el parámetro del nombre del ingrediente en la URL
+function getIngredientNameFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('name');
+}
 
-// Función para obtener los detalles del ingrediente
-function fetchIngredientDetails(ingredientName) {
-    // Reemplazar espacios por guiones bajos para la API
-    const formattedIngredientName = ingredientName.replace(/ /g, "_");
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${formattedIngredientName}`;
+// Función para buscar los detalles del ingrediente en la API de TheCocktailDB
+function fetchIngredientDetails(ingredient) {
+    const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`;
 
-    fetch(url)
+    fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            const ingredient = data.ingredients[0];
-            ingredientNameElement.textContent = ingredient.strIngredient;
-            ingredientIdElement.textContent = ingredient.idIngredient;
-            ingredientDescriptionElement.textContent = ingredient.strDescription || "No hay descripción disponible.";
-            ingredientTypeElement.textContent = ingredient.strType || "No especificado.";
-            ingredientAlcoholicElement.textContent = ingredient.strAlcohol === "Yes" ? "Sí" : "No";
-            ingredientAbvElement.textContent = ingredient.strABV || "N/A";
-
-            // Imagen del ingrediente
-            const imageUrl = `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}.png`;
-            ingredientImg.src = imageUrl.replace(/ /g, "%20");
+            const ingredientData = data.ingredients[0]; // Obtenemos los datos del primer ingrediente
+            displayIngredientDetails(ingredientData);
         })
-        .catch(error => {
-            console.error("Error al obtener los detalles del ingrediente:", error);
-        });
+        .catch(error => console.error('Error al obtener los datos del ingrediente:', error));
 }
 
-// Llamar a la función con el nombre del ingrediente desde la URL
-if (ingredientName) {
-    fetchIngredientDetails(ingredientName);
+// Función para mostrar los detalles del ingrediente en la página
+function displayIngredientDetails(ingredient) {
+    document.getElementById('ingredient-name').innerText = ingredient.strIngredient;
+    document.getElementById('ingredient-id').innerText = ingredient.idIngredient;
+    document.getElementById('ingredient-description').innerText = ingredient.strDescription || 'This item has no description';
+    document.getElementById('ingredient-type').innerText = ingredient.strType || 'Unknown type';
+    document.getElementById('ingredient-alcoholic').innerText = ingredient.strAlcohol === 'Yes' ? 'Yes' : 'No';
+    document.getElementById('ingredient-abv').innerText = ingredient.strABV ? `${ingredient.strABV}%` : 'Not available';
+
+    // Reemplazar los espacios en el nombre del ingrediente por %20
+    const ingredientNameFormatted = ingredient.strIngredient.replace(/ /g, '%20');
+    const imageUrl = `https://www.thecocktaildb.com/images/ingredients/${ingredientNameFormatted}.png`;
+
+    // Asignar la URL de la imagen o una por defecto
+    document.getElementById('ingredient-img').src = imageUrl;
 }
+
+// Obtener el nombre del ingrediente desde el URL y buscar sus detalles
+const ingredientName = getIngredientNameFromUrl().replace(/_/g, ' '); // Reemplazamos los _ por espacios
+fetchIngredientDetails(ingredientName);
