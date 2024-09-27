@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
   
+  function goBack() {
+    window.history.back();
+  }
+  
   async function showCocktailDetail(id) {
     const titleElem = document.querySelector("#cocktail-title");
     const imageElem = document.querySelector("#cocktail-image");
