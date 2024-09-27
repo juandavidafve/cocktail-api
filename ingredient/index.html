@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Ingrediente</title>
     <link rel="stylesheet" href="ingredients.css">
 </head>
+
 <body>
-    <!-- Botón para retroceder -->
-    <button id="back-button" onclick="goBack()">Atrás</button>
-    
     <div class="container">
         <div class="ingredient-card">
+            <div class="ingredient-card2">
+            <button id="back-button" onclick="goBack()">Back</button>
+            </div>
             <img id="ingredient-img" alt="Imagen del ingrediente">
             <div class="ingredient-details">
                 <h2 id="ingredient-name">Ingredient name:</h2>
@@ -71,4 +73,5 @@
         fetchIngredientDetails(ingredientName);
     </script>
 </body>
+
 </html>

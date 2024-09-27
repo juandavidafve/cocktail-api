@@ -1,53 +1,56 @@
 body {
     background-color: hsl(267, 61%, 93%);
-    /* Fondo morado oscuro */
     color: #7937eb;
-    /* Texto blanco */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+#back-button {
+    display: block;
+    top: 10px;
+    left: 10px;
+    background-color: #7937eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .container {
     display: flex;
     justify-content: center;
-    /* Centra el contenido horizontalmente */
     align-items: center;
-    /* Centra el contenido verticalmente */
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .ingredient-card {
     background-color: #ddd6ff;
-    /* Un tono de morado más claro para contraste */
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     display: flex;
     padding: 20px;
     max-width: 1200px;
-    /* Ancho máximo de la tarjeta ajustado */
     width: 100%;
     flex-wrap: wrap;
-    /* Permite que los elementos internos se ajusten */
+    box-sizing: border-box;
 }
 
 #ingredient-img {
     width: 200px;
-    /* Ancho de la imagen */
     height: 200px;
-    /* Altura de la imagen */
     border-radius: 10px;
     margin-right: 20px;
-    /* Espacio a la derecha de la imagen */
     object-fit: cover;
-    /* Ajusta la imagen para que no se deforme */
     align-self: center;
-    /* Centra verticalmente la imagen */
 }
 
 .ingredient-details {
     flex: 1;
-    /* Permite que la sección de detalles ocupe todo el espacio restante */
+    overflow: auto;
 }
 
 .ingredient-details h2 {
@@ -56,11 +59,31 @@ body {
 
 .ingredient-details p {
     margin: 10px 0;
-    /* Añade separación entre los párrafos */
 }
 
 .ingredient-details p strong {
     display: block;
-    /* Coloca el texto en un nuevo renglón */
     margin-bottom: 5px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .ingredient-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #ingredient-img {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .ingredient-details {
+        text-align: center;
+    }
 }
