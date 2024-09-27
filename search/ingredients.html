@@ -9,20 +9,28 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="ingredient-card">
+            <!-- Botón para retroceder -->
+            <button id="back-buttoni" onclick="goBack()">Back</button>
             <img id="ingredient-img" alt="Imagen del ingrediente">
             <div class="ingredient-details">
-                <h2 id="ingredient-name">Nombre del ingrediente</h2>
+                <h2 id="ingredient-name">Ingredient name</h2>
                 <p><strong>ID:</strong> <span id="ingredient-id"></span></p>
-                <p id="ingredient-description">Descripción del ingrediente</p>
-                <p><strong>Tipo:</strong> <span id="ingredient-type"></span></p>
-                <p><strong>¿Contiene alcohol?:</strong> <span id="ingredient-alcoholic"></span></p>
-                <p><strong>Grado de alcohol (ABV):</strong> <span id="ingredient-abv"></span></p>
+                <p id="ingredient-description">Ingredient description</p>
+                <p><strong>Type:</strong> <span id="ingredient-type"></span></p>
+                <p><strong>Does it contain alcohol?:</strong> <span id="ingredient-alcoholic"></span></p>
+                <p><strong>Alcohol by volume (ABV):</strong> <span id="ingredient-abv"></span></p>
             </div>
         </div>
     </div>
     <script>
+        // Función para retroceder a la página anterior
+        function goBack() {
+            window.history.back();
+        }
+
         // Función para obtener el parámetro del nombre del ingrediente en la URL
         function getIngredientNameFromUrl() {
             const params = new URLSearchParams(window.location.search);
@@ -46,6 +54,19 @@
         function displayIngredientDetails(ingredient) {
             document.getElementById('ingredient-name').innerText = ingredient.strIngredient;
             document.getElementById('ingredient-id').innerText = ingredient.idIngredient;
+<<<<<<< HEAD
+            document.getElementById('ingredient-description').innerText = ingredient.strDescription || 'This ingredient has no description';
+            document.getElementById('ingredient-type').innerText = ingredient.strType || 'Unknown type';
+            document.getElementById('ingredient-alcoholic').innerText = ingredient.strAlcohol === 'Yes' ? 'Yes' : 'No';
+            document.getElementById('ingredient-abv').innerText = ingredient.strABV ? `${ingredient.strABV}%` : 'Not available';
+
+            // Reemplazar los espacios en el nombre del ingrediente por %20
+            const ingredientNameFormatted = ingredient.strIngredient.replace(/ /g, '%20');
+            const imageUrl = `https://www.thecocktaildb.com/images/ingredients/${ingredientNameFormatted}.png`;
+
+            // Asignar la URL de la imagen o una por defecto
+            document.getElementById('ingredient-img').src = imageUrl;
+=======
             document.getElementById('ingredient-description').innerText = ingredient.strDescription || 'No disponible';
             document.getElementById('ingredient-type').innerText = ingredient.strType || 'Desconocido';
             document.getElementById('ingredient-alcoholic').innerText = ingredient.strAlcohol === 'Yes' ? 'Sí' : 'No';
@@ -57,6 +78,7 @@
             } else {
                 document.getElementById('ingredient-img').src = 'default-image.jpg'; // Imagen por defecto si no hay imagen disponible
             }
+>>>>>>> 601527b8c0a65f365e83db17bedb545f62f45dcb
         }
 
         // Obtener el nombre del ingrediente desde el URL y buscar sus detalles
